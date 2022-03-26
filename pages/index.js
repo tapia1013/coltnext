@@ -1,12 +1,10 @@
-import Link from 'next/link'
+import Navbar from '../components/Navbar';
 
 const Index = () => {
   console.log("********RUNNING INDEX COMPONENT!********");
   return (
     <>
-      <Link href='/about'>
-        <a>About Page</a>
-      </Link>
+      <Navbar />
       <h1>Index Page!!!</h1>
     </>
   )
