@@ -1,0 +1,37 @@
+1) Create pages folder in root
+2) Next is like react and react-router combined where a file is a route
+3) _app.js we can override _app.js for custom stuff
+4) You can override it, and control the page initialization which allows you to do amazing things like:
+  - Persisting layouy between page changes
+  - Keep state when navigating pages
+  - Custom error handling using `componentDidCatch`
+
+5) **TO OVVERRIDE***, create the `./pages/_app.js` file and override the App class as show below aka place bottom code in a file in your project
+  ````
+    import React from 'react'
+    import App, {Container} from 'next/app'
+  
+    class MyApp extends App {
+      static async getInitialProps({Component,ctx}) {
+        let pageProps = {}
+        
+        if(Component.getInitialProps) {
+          pageProps = await Component.getInitialProps(ctx);
+        }
+        
+        return {pageProps}
+      }
+      
+      render() {
+        const {Component, pageProps} = this.props;
+        
+        return(
+          <Container>
+            <Component {...pageProps} />
+          </Container>
+        )
+      }
+    }
+    export default MyApp;
+  
+  ```
